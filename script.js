@@ -1,4 +1,4 @@
-// function generatePassword (params) {
+function generatePassword (params) {
     // Ask how many character the password should be
     var passwordLength = prompt("How many characters should the password be?" + "\n" + "We recommend at least 10");
     // Ask if the user wants numbers in the password
@@ -17,4 +17,4 @@
     // var completePassword 
     // // Paste code to the clipboard
     // var pastedPassword = document.execCommand("paste")
-// }
+}
