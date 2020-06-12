@@ -9,14 +9,17 @@ function writePassword() {
   var generatedPassword = [];
   // get the number of characters for the password
   var neededLength = prompt("How many characters should the password be?" + "\n" + "We recommend at least 10");
-  // Ask if the user wants numbers in the password
-  var needsNumber = confirm("Do you want numbers in the password?" + "\n" + "Press Ok for yes and Cancel for no");
-  // Ask if the user wants special characters 
-  var needsSpecial = confirm("Do you want special characters in the password?" + "\n" + "Press Ok for yes and Cancel for no");
-  // Ask if the user wants lower case letters
-  var needsLower = confirm("Do you want lower case letters in the password?" + "\n" + "Press Ok for yes and Cancel for no");
-  // Ask if the user wants upper case letters
-  var needsUpper = confirm("Do you want UPPER CASE letters in the password?" + "\n" + "Press Ok for yes and Cancel for no");
+  if (neededLength != null) {
+    // Ask if the user wants numbers in the password
+    var needsNumber = confirm("Do you want numbers in the password?" + "\n" + "Press Ok for yes and Cancel for no");
+    // Ask if the user wants special characters
+    var needsSpecial = confirm("Do you want special characters in the password?" + "\n" + "Press Ok for yes and Cancel for no");
+    // Ask if the user wants lower case letters
+    var needsLower = confirm("Do you want lower case letters in the password?" + "\n" + "Press Ok for yes and Cancel for no");
+    // Ask if the user wants upper case letters
+    var needsUpper = confirm("Do you want UPPER CASE letters in the password?" + "\n" + "Press Ok for yes and Cancel for no");
+  }
+
   // Create a while loop that cycles through options until the generatedPassword array is full
 
   while (generatedPassword.length < neededLength) {
@@ -47,20 +50,21 @@ function writePassword() {
       var addSpecial = allSpecial[Math.floor(Math.random() * allSpecial.length)];
       generatedPassword.push(addSpecial);
       // if the user does not select any character types
-    } else if (neededLength === false) {
+    } else if (needsUpper === false && needsLower === false && needsNumber === false && needsSpecial === false) {
       // tell the user they need to select at least one option or exit the program
       var alert = confirm("Looks like you didn't pick any options." + "\n" + "Did you want to try again?");
       // If the user wants to try again
       if (alert === true) {
         // run function again
         writePassword();
-        // break the loop
+        // if user wants to exit
       } else if (alert === false) {
         // end the loop
         break
       }
     }
   }
+  
   // convert the generated password into a readable string
   var finalPassword = generatedPassword.join("");
   // determine where to put the readable password string
